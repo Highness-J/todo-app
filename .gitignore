@@ -1,0 +1,23 @@
+# 민감한 환경변수 파일 (절대 커밋 금지)
+.cnv
+.env
+.env.local
+.env*.local
+app/.env.local
+app/.env
+
+# Next.js
+app/.next/
+app/node_modules/
+app/out/
+app/.vercel
+app/tsconfig.tsbuildinfo
+
+# OMC 운영 상태 (로컬 전용)
+.omc/
+
+# 기타
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
