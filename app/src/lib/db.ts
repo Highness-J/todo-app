@@ -5,12 +5,6 @@ declare global {
   var mongoose: { conn: typeof import('mongoose') | null; promise: Promise<typeof import('mongoose')> | null }
 }
 
-const MONGODB_URI = process.env.MONGODB_URI!
-
-if (!MONGODB_URI) {
-  throw new Error('MONGODB_URI 환경변수가 설정되지 않았습니다')
-}
-
 let cached = global.mongoose
 
 if (!cached) {
@@ -18,6 +12,11 @@ if (!cached) {
 }
 
 export async function connectDB() {
+  const MONGODB_URI = process.env.MONGODB_URI
+  if (!MONGODB_URI) {
+    throw new Error('MONGODB_URI 환경변수가 설정되지 않았습니다')
+  }
+
   if (cached.conn) return cached.conn
 
   if (!cached.promise) {
